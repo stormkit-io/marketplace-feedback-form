@@ -12,14 +12,13 @@ if (!document.head.querySelector("#ff-css")) {
 }
 
 function Widget() {
-  const [showForm, setShowForm] = useState(false);
-  const closeForm = () => setShowForm(false);
+  const [showForm, setShowForm] = useState(true);
 
   return (
-    <div class="ff-wrapper" onMouseLeave={closeForm}>
+    <div class="ff-wrapper">
       <div class="ff-inner-wrapper">
         {showForm && <Form />}
-        <Button onHover={() => setShowForm(true)} />
+        <Button onClick={() => setShowForm(!showForm)} />
       </div>
     </div>
   );

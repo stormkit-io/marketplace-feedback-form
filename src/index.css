@@ -32,26 +32,62 @@
 }
 
 .ff-form {
-  padding: 1rem;
+  overflow: hidden;
   margin-bottom: 1rem;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-weight: normal;
+  line-height: 1.25;
+  min-width: 360px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
+.ff-text-opaque {
+  opacity: 0.6;
+}
+
+.ff-form-header-wrapper {
+  padding: 1.5rem;
+  font-weight: normal;
+  color: white;
+  background-color: rgb(139, 36, 177, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .ff-form-header {
   margin: 0;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.ff-form-subheader {
+  margin: 0;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+.ff-form-body-wrapper .ff-label {
+  margin: 0;
+  padding: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .ff-textarea {
-  border: 1px solid #c8c8c8;
-  width: calc(100% - 1rem);
-  padding: 0.5rem;
+  font-family: inherit;
+  border: none;
+  width: calc(100% - 3rem);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: rgb(139, 36, 177, 0.05);
+  outline: none;
+  font-size: 1rem;
 }
 
 .ff-stars {
   display: flex;
+  padding: 0 1.5rem;
 }
 
 .ff-star {
@@ -59,13 +95,31 @@
   border-radius: 50%;
   width: 1.5rem;
   height: 1.5rem;
-  border: 1px solid #c8c8c8;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
   cursor: pointer;
 }
 
 .ff-star:hover {
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .ff-star.ff-selected {
-  background-color: green;
+  background-color: rgb(139, 36, 177, 0.9);
+}
+
+.ff-form-footer {
+  text-align: center;
+}
+
+.ff-form-submit {
+  background-color: rgb(139, 36, 177, 0.9);
+  border: 1px solid rgb(139, 36, 177);
+  color: white;
+  padding: 1rem 5rem;
+  border-radius: 3px;
+  margin: 0 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

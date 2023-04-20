@@ -1,15 +1,14 @@
 interface Props {
-  onHover: () => void;
+  onClick: () => void;
 }
 
-export default function Button({ onHover }: Props) {
+export default function Button({ onClick }: Props) {
   return (
     <button
       class="ff-button"
-      onMouseEnter={onHover}
-      onTouchStart={onHover}
       onClick={(e) => {
         e.preventDefault();
+        onClick();
       }}
     >
       <svg
