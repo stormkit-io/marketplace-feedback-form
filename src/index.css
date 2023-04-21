@@ -1,3 +1,9 @@
+.ff-wrapper {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
 .ff-button {
   width: 3rem;
   height: 3rem;
@@ -18,12 +24,6 @@
   transform: rotate(360deg);
 }
 
-.ff-wrapper {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-}
-
 .ff-inner-wrapper {
   display: flex;
   align-items: flex-end;
@@ -32,6 +32,7 @@
 }
 
 .ff-form {
+  max-width: 320px;
   overflow: hidden;
   margin-bottom: 1rem;
   border-radius: 4px;
@@ -76,7 +77,8 @@
 .ff-textarea {
   font-family: inherit;
   border: none;
-  width: calc(100% - 3rem);
+  width: 100%;
+  box-sizing: border-box;
   padding: 1.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
@@ -93,6 +95,7 @@
 .ff-star {
   margin-right: 0.5rem;
   border-radius: 50%;
+  padding: 0;
   width: 1.5rem;
   height: 1.5rem;
   background: rgba(0, 0, 0, 0.1);
@@ -122,4 +125,8 @@
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+.ff-alert {
+  margin: 0 1.5rem 1rem 1.5rem;
 }

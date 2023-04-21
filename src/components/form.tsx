@@ -3,9 +3,44 @@ import { useState } from "preact/hooks";
 export default function Form() {
   const [feedback, setFeedback] = useState<string>("");
   const [selectedStar, setSelectedStar] = useState<number>(4);
+  const [error, setError] = useState<string>();
+  const [success, setSuccess] = useState<string>();
 
   return (
-    <form class="ff-form">
+    <form
+      class="ff-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const url = process.env.API_URL;
+
+        if (!url) {
+          console.error(
+            "API URL missing. Define it using the API_URL environment variable."
+          );
+          return;
+        }
+
+        setError(undefined);
+        setSuccess(undefined);
+
+        fetch(`${url.replace(/\/$/, "")}/submit`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            stars: selectedStar,
+            feedback,
+          }),
+        })
+          .then(() => {
+            setSuccess("Your feedback was submitted successfully. Thank you!");
+          })
+          .catch(() => {
+            setError(
+              "Something went wrong while submitting the feedback. Please try again."
+            );
+          });
+      }}
+    >
       <div class="ff-form-header-wrapper">
         <h2 class="ff-form-header">Send us your feedback!</h2>
         <h3 class="ff-form-subheader">
@@ -33,12 +68,19 @@ export default function Form() {
             autoFocus
             id="ff-textarea"
             class="ff-textarea"
-            rows={10}
+            rows={8}
             placeholder={"Describe your experience here"}
             value={feedback}
             onChange={(e) => setFeedback(e?.currentTarget.value)}
           />
         </div>
+        {error || success ? (
+          <div class={`ff-alert ${error ? "ff-error" : "ff-success"}`}>
+            {error || success}
+          </div>
+        ) : (
+          ""
+        )}
         <div class="ff-form-footer">
           <button class="ff-form-submit">SUBMIT</button>
         </div>

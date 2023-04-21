@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "dev:api": "stormkit api -d src/api",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
