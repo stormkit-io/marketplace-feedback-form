@@ -1,5 +1,27 @@
 import { useState } from "preact/hooks";
 
+const SuccessIcon = () => (
+  <svg
+    focusable="false"
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    class="ff-success-icon"
+  >
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+  </svg>
+);
+
+const ErrorIcon = () => (
+  <svg
+    focusable="false"
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    class="ff-error-icon"
+  >
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+  </svg>
+);
+
 export default function Form() {
   const [feedback, setFeedback] = useState<string>("");
   const [selectedStar, setSelectedStar] = useState<number>(4);
@@ -75,8 +97,9 @@ export default function Form() {
           />
         </div>
         {error || success ? (
-          <div class={`ff-alert ${error ? "ff-error" : "ff-success"}`}>
-            {error || success}
+          <div class="ff-alert">
+            {success && <SuccessIcon />}
+            {error && <ErrorIcon />} {success || error}
           </div>
         ) : (
           ""
