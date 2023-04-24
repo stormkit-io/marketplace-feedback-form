@@ -12,7 +12,7 @@ if (!document.head.querySelector("#ff-css")) {
 }
 
 function Widget() {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div class="ff-wrapper">
