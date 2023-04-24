@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-const url = process.env.DISCORD_URL;
+const url = process.env.FF_DISCORD_URL;
 
 interface Post {
   stars?: number;
@@ -58,7 +58,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   if (!url) {
     res.statusCode = 400;
     res.write(
-      "Discord url missing. Set it using the DISCORD_URL environment variable."
+      "Discord url missing. Set it using the FF_DISCORD_URL environment variable."
     );
     res.end();
     return;

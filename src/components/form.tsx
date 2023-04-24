@@ -33,11 +33,11 @@ export default function Form() {
       class="ff-form"
       onSubmit={(e) => {
         e.preventDefault();
-        const url = process.env.API_URL;
+        const url = process.env.FF_API_URL;
 
         if (!url) {
           console.error(
-            "API URL missing. Define it using the API_URL environment variable."
+            "API URL missing. Define it using the FF_API_URL environment variable."
           );
           return;
         }
