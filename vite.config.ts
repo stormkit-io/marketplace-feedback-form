@@ -5,7 +5,9 @@ dotenv.config();
 
 export default defineConfig({
   define: {
-    "process.env.FF_API_URL": JSON.stringify(process.env.FF_API_URL),
+    "process.env.FF_API_URL": JSON.stringify(
+      process.env.FF_API_URL || process.env.SK_ENV_URL
+    ),
   },
   build: {
     rollupOptions: {

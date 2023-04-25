@@ -1,15 +1,14 @@
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
-import glob from "glob";
+import { globSync } from "glob";
 import dotenv from "dotenv";
 import { build } from "vite";
 
 dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const files = glob
-  .sync("src/api/**/*.ts")
+const files = globSync("src/api/**/*.ts")
   // Filter out private files
   .filter((file) => {
     return file.indexOf("_") !== 0 && file.indexOf("/_") === -1;
