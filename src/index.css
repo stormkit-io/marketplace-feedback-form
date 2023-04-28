@@ -125,6 +125,12 @@
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
   cursor: pointer;
+  position: relative;
+}
+
+.ff-form-submit-loading {
+  opacity: 0.5;
+  cursor: disabled;
 }
 
 .ff-alert {
@@ -144,10 +150,27 @@
   width: 2.5rem;
 }
 
+.ff-spinner-icon {
+  fill: white;
+  width: 1.5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -0.75rem;
+  margin-top: -0.75rem;
+  animation: ffRotateSpinner 2s linear infinite;
+}
+
 .ff-success-icon {
   fill: green;
 }
 
 .ff-error-icon {
   fill: rgb(163, 16, 16);
+}
+
+@keyframes ffRotateSpinner {
+  to {
+    transform: rotate(360deg);
+  }
 }

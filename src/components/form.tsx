@@ -22,11 +22,19 @@ const ErrorIcon = () => (
   </svg>
 );
 
+const SpinnerIcon = () => (
+  // Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.
+  <svg viewBox="0 0 512 512" class="ff-spinner-icon">
+    <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z" />
+  </svg>
+);
+
 export default function Form() {
   const [feedback, setFeedback] = useState<string>("");
   const [selectedStar, setSelectedStar] = useState<number>(4);
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
+  const [loading, setLoading] = useState(false);
 
   return (
     <form
@@ -44,6 +52,7 @@ export default function Form() {
 
         setError(undefined);
         setSuccess(undefined);
+        setLoading(true);
 
         fetch(`${url.replace(/\/$/, "")}/submit`, {
           method: "POST",
@@ -60,6 +69,9 @@ export default function Form() {
             setError(
               "Something went wrong while submitting the feedback. Please try again."
             );
+          })
+          .finally(() => {
+            setLoading(false);
           });
       }}
     >
@@ -105,7 +117,14 @@ export default function Form() {
           ""
         )}
         <div class="ff-form-footer">
-          <button class="ff-form-submit">SUBMIT</button>
+          <button
+            class={`ff-form-submit${loading ? " ff-form-submit-loading" : ""}`}
+          >
+            <span style={{ visibility: loading ? "hidden" : "visible" }}>
+              SUBMIT
+            </span>
+            {loading && <SpinnerIcon />}
+          </button>
         </div>
       </div>
     </form>
